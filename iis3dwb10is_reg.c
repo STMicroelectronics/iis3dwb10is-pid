@@ -2422,8 +2422,7 @@ int32_t iis3dwb10is_ispu_read_data_raw_get(const stmdev_ctx_t *ctx,
   ret = iis3dwb10is_mem_bank_set(ctx, IIS3DWB10IS_ISPU_MEM_BANK);
   if (ret == 0)
   {
-    ret += iis3dwb10is_read_reg(ctx, IIS3DWB10IS_ISPU_DOUT_00_L, (uint8_t *) val,
-                                len);
+    ret += iis3dwb10is_read_reg(ctx, IIS3DWB10IS_ISPU_DOUT_00_L, val, len);
   }
 
   ret += iis3dwb10is_mem_bank_set(ctx, IIS3DWB10IS_MAIN_MEM_BANK);

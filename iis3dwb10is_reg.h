@@ -1381,6 +1381,10 @@ int32_t iis3dwb10is_ispu_write_flags(const stmdev_ctx_t *ctx, uint16_t data);
 int32_t iis3dwb10is_ispu_read_flags(const stmdev_ctx_t *ctx, uint16_t *data);
 int32_t iis3dwb10is_ispu_clear_flags(const stmdev_ctx_t *ctx);
 
+int32_t iis3dwb10is_ispu_read_data_raw_get(const stmdev_ctx_t *ctx,
+                                           uint8_t *val,
+                                           uint8_t len);
+
 int32_t iis3dwb10is_ispu_int1_ctrl_get(const stmdev_ctx_t *ctx, uint16_t *val);
 int32_t iis3dwb10is_ispu_int1_ctrl_set(const stmdev_ctx_t *ctx, uint16_t val);
 int32_t iis3dwb10is_ispu_int2_ctrl_get(const stmdev_ctx_t *ctx, uint16_t *val);
