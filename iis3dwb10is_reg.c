@@ -2964,8 +2964,8 @@ int32_t iis3dwb10is_data_ready_mode_get(const stmdev_ctx_t *ctx, iis3dwb10is_dat
 int32_t iis3dwb10is_pin_int1_route_set(const stmdev_ctx_t *ctx,
                                       iis3dwb10is_pin_int_route_t val)
 {
-  iis3dwb10is_int_ctrl1_t int_ctrl1;
-  iis3dwb10is_int_ctrl2_t int_ctrl2;
+  iis3dwb10is_int_ctrl1_t int_ctrl1 = { 0 };
+  iis3dwb10is_int_ctrl2_t int_ctrl2 = { 0 };
   int32_t ret;
 
   ret = iis3dwb10is_read_reg(ctx, IIS3DWB10IS_INT_CTRL1, (uint8_t *)&int_ctrl1, 1);
@@ -2978,6 +2978,7 @@ int32_t iis3dwb10is_pin_int1_route_set(const stmdev_ctx_t *ctx,
     int_ctrl2.int1_fifo_th     = val.fifo_th;
     int_ctrl2.int1_fifo_ovr    = val.fifo_ovr;
     int_ctrl2.int1_fifo_full   = val.fifo_full;
+    int_ctrl2.int1_counter_bdr = val.counter_bdr;
     int_ctrl2.int1_sleepcnt    = val.sleep_cnt;
 
     ret = iis3dwb10is_write_reg(ctx, IIS3DWB10IS_INT_CTRL1, (uint8_t *)&int_ctrl1, 1);
@@ -3014,6 +3015,7 @@ int32_t iis3dwb10is_pin_int1_route_get(const stmdev_ctx_t *ctx,
     val->fifo_ovr   = int_ctrl2.int1_fifo_ovr;
     val->fifo_full  = int_ctrl2.int1_fifo_full;
     val->sleep_cnt  = int_ctrl2.int1_sleepcnt;
+    val->counter_bdr  = int_ctrl2.int1_counter_bdr;
   }
 
   return ret;
@@ -3030,8 +3032,8 @@ int32_t iis3dwb10is_pin_int1_route_get(const stmdev_ctx_t *ctx,
 int32_t iis3dwb10is_pin_int2_route_set(const stmdev_ctx_t *ctx,
                                       iis3dwb10is_pin_int_route_t val)
 {
-  iis3dwb10is_int_ctrl1_t int_ctrl1;
-  iis3dwb10is_int_ctrl3_t int_ctrl3;
+  iis3dwb10is_int_ctrl1_t int_ctrl1 = { 0 };
+  iis3dwb10is_int_ctrl3_t int_ctrl3 = { 0 };
   int32_t ret;
 
   ret = iis3dwb10is_read_reg(ctx, IIS3DWB10IS_INT_CTRL1, (uint8_t *)&int_ctrl1, 1);
@@ -3044,6 +3046,7 @@ int32_t iis3dwb10is_pin_int2_route_set(const stmdev_ctx_t *ctx,
     int_ctrl3.int2_fifo_th     = val.fifo_th;
     int_ctrl3.int2_fifo_ovr    = val.fifo_ovr;
     int_ctrl3.int2_fifo_full   = val.fifo_full;
+    int_ctrl3.int2_counter_bdr = val.counter_bdr;
     int_ctrl3.int2_sleepcnt    = val.sleep_cnt;
 
     ret = iis3dwb10is_write_reg(ctx, IIS3DWB10IS_INT_CTRL1, (uint8_t *)&int_ctrl1, 1);
@@ -3080,6 +3083,7 @@ int32_t iis3dwb10is_pin_int2_route_get(const stmdev_ctx_t *ctx,
     val->fifo_ovr   = int_ctrl3.int2_fifo_ovr;
     val->fifo_full  = int_ctrl3.int2_fifo_full;
     val->sleep_cnt  = int_ctrl3.int2_sleepcnt;
+    val->counter_bdr  = int_ctrl3.int2_counter_bdr;
   }
 
   return ret;
