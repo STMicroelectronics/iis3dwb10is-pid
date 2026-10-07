@@ -1524,7 +1524,9 @@ int32_t iis3dwb10is_counter_bdr_cfg_set(const stmdev_ctx_t *ctx, uint16_t val)
   int32_t ret;
 
   if (val > 4096)
+  {
     return -1;
+  }
 
   ret = iis3dwb10is_read_reg(ctx, IIS3DWB10IS_COUNTER_BDR_H, (uint8_t *)&bdr_h, 1);
 
@@ -1913,8 +1915,8 @@ int32_t iis3dwb10is_ispu_dev_status_get(const stmdev_ctx_t *ctx,
   ret = iis3dwb10is_read_reg(ctx, IIS3DWB10IS_DEVICE_STATUS, (uint8_t *)&status, 1);
   if (ret == 0)
   {
-      val->ctrl_access = status.ispu_ctrl_access;
-      val->core_sleep = status.ispu_core_sleep;
+    val->ctrl_access = status.ispu_ctrl_access;
+    val->core_sleep = status.ispu_core_sleep;
   }
 
   return ret;
@@ -2165,7 +2167,9 @@ int32_t iis3dwb10is_ispu_write_memory(const stmdev_ctx_t *ctx,
   {
     /* Data RAM size is 56KB */
     if (mem_addr >= 0xE000)
+    {
       goto exit;
+    }
 
     /* transform address into physical */
     mem_addr += IIS3DWB10IS_ISPU_DATA_RAM_START;
@@ -2174,7 +2178,9 @@ int32_t iis3dwb10is_ispu_write_memory(const stmdev_ctx_t *ctx,
   {
     /* Program RAM size is 8KB */
     if (mem_addr >= 0x8000)
+    {
       goto exit;
+    }
   }
 
   ret = iis3dwb10is_mem_bank_set(ctx, IIS3DWB10IS_ISPU_MEM_BANK_RAM_ACCESS);
@@ -2256,7 +2262,9 @@ int32_t iis3dwb10is_ispu_read_memory(const stmdev_ctx_t *ctx,
   {
     /* Data RAM size is 56KB */
     if (mem_addr >= 0xE000)
+    {
       goto exit;
+    }
 
     /* transform address into physical */
     mem_addr += IIS3DWB10IS_ISPU_DATA_RAM_START;
@@ -2265,7 +2273,9 @@ int32_t iis3dwb10is_ispu_read_memory(const stmdev_ctx_t *ctx,
   {
     /* Program RAM size is 8KB */
     if (mem_addr >= 0x8000)
+    {
       goto exit;
+    }
   }
 
   ret = iis3dwb10is_mem_bank_set(ctx, IIS3DWB10IS_ISPU_MEM_BANK_RAM_ACCESS);
@@ -2962,7 +2972,7 @@ int32_t iis3dwb10is_data_ready_mode_get(const stmdev_ctx_t *ctx, iis3dwb10is_dat
   *
   */
 int32_t iis3dwb10is_pin_int1_route_set(const stmdev_ctx_t *ctx,
-                                      iis3dwb10is_pin_int_route_t val)
+                                       iis3dwb10is_pin_int_route_t val)
 {
   iis3dwb10is_int_ctrl1_t int_ctrl1 = { 0 };
   iis3dwb10is_int_ctrl2_t int_ctrl2 = { 0 };
@@ -3030,7 +3040,7 @@ int32_t iis3dwb10is_pin_int1_route_get(const stmdev_ctx_t *ctx,
   *
   */
 int32_t iis3dwb10is_pin_int2_route_set(const stmdev_ctx_t *ctx,
-                                      iis3dwb10is_pin_int_route_t val)
+                                       iis3dwb10is_pin_int_route_t val)
 {
   iis3dwb10is_int_ctrl1_t int_ctrl1 = { 0 };
   iis3dwb10is_int_ctrl3_t int_ctrl3 = { 0 };
