@@ -30,7 +30,21 @@ This directory contains the IIS3DWB10IS component drivers.
 # Update history
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section1" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section2" checked aria-hidden="true">
+<label for="collapse-section2" aria-hidden="true">V1.0.1 / 08-Oct-2026</label>
+<div>
+
+## Main changes
+
+- Fix some cosmetic code alignment
+- Add counter_bdr in pin_int_route_t
+- Add iis3dwb10is_ispu_read_data_raw_get prototype
+
+##
+
+</div>
+
+<input type="checkbox" id="collapse-section1" aria-hidden="true">
 <label for="collapse-section1" aria-hidden="true">V1.0.0 / 04-Jun-2026</label>
 <div>
 
